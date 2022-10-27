@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Practica01</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:replace="layout/plantilla1 :: header"/>
+
+        <h2> Datos de Estado</h2>
+        <a th:href="@{/}">Regresar</a>  
+        <hr>
+            <form th:action="@{/estado/guardar}"
+                  method="post"
+                  th:object="${estado}">
+                <input type="hidden" name="idEstado" th:field="*{idEstado}"/>
+                <fieldset> 
+                    <label for="nombreEstado">Nombre Estado:</label>
+                    <input type="text" name="nombreEstado"
+                           required=true
+                           placeholder="nombre estado"
+                           size="15"
+                           th:field="*{nombreEstado}"/>
+                </fieldset> 
+
+                <fieldset> 
+                    <label for="capital">Capital:</label>
+                    <input type="text" name="capital" 
+                           required=true
+                           placeholder="capital"
+                           size="15"
+                           th:field="*{capital}"/>
+                </fieldset> 
+
+                <fieldset> 
+                    <label for="poblacion">Poblacion:</label>
+                    <input type="number" name="poblacion"
+                           required=true
+                           placeholder="cantidad poblacion"
+                           size="15"
+                           th:field="*{poblacion}"/>
+                </fieldset> 
+
+                <fieldset> 
+                    <label for="costas">Costas:</label>
+                    <input 
+                        type="number" name="costas" 
+                        placeholder="cantidad costas"
+                        required=true
+                        size="15"
+                        th:field="*{costas}"/>
+                </fieldset> 
+                <hr/>
+                <input type="submit" name="guardar" value="guardar"/>
+            </form>
+            <footer th:replace="layout/plantilla2 :: footer"/>
+    </body>
+</html>
